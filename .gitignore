@@ -1,5 +1,11 @@
 Pods/
 Podfile.lock
 
-McDonalds-IOS-Swift.xcworkspace/xcuserdata/
-McDonalds-IOS-Swift.xcodeproj/xcuserdata/
+TinkoffChat.xcworkspace/xcuserdata/
+TinkoffChat.xcodeproj/xcuserdata/
+
+*.xccheckout
+*.xcscmblueprint
+
+build/
+DerivedData/
