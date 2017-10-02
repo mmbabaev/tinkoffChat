@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F7D273D1F7ED91A008E9843 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7D273C1F7ED91A008E9843 /* UIColor+AppColors.swift */; };
 		6F9A45971F72C9D6006B6055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A45961F72C9D6006B6055 /* AppDelegate.swift */; };
 		6F9A45991F72C9D6006B6055 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A45981F72C9D6006B6055 /* ProfileViewController.swift */; };
 		6F9A459C1F72C9D6006B6055 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A459A1F72C9D6006B6055 /* Profile.storyboard */; };
 		6F9A459E1F72C9D6006B6055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A459D1F72C9D6006B6055 /* Assets.xcassets */; };
 		6F9A45A11F72C9D6006B6055 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A459F1F72C9D6006B6055 /* LaunchScreen.storyboard */; };
-		6F9A45A91F72D1B6006B6055 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A45A81F72D1B6006B6055 /* Media.xcassets */; };
+		6F9A45A91F72D1B6006B6055 /* ProfileMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */; };
+		6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */; };
+		6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA00A1F81F41C003033FF /* RoundButton.swift */; };
+		6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F7D273C1F7ED91A008E9843 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		6F9A45931F72C9D6006B6055 /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9A45961F72C9D6006B6055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F9A45981F72C9D6006B6055 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -23,7 +28,10 @@
 		6F9A459D1F72C9D6006B6055 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F9A45A01F72C9D6006B6055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F9A45A21F72C9D6006B6055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F9A45A81F72D1B6006B6055 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ProfileMedia.xcassets; sourceTree = "<group>"; };
+		6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
+		6F9AA00A1F81F41C003033FF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F7D273A1F7ED8F4008E9843 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				6F9AA00A1F81F41C003033FF /* RoundButton.swift */,
+				6F7D273B1F7ED8FE008E9843 /* Extensions */,
+			);
+			path = Universal;
+			sourceTree = "<group>";
+		};
+		6F7D273B1F7ED8FE008E9843 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6F7D273C1F7ED91A008E9843 /* UIColor+AppColors.swift */,
+				6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */,
+				6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6F9A458A1F72C9D6006B6055 = {
 			isa = PBXGroup;
 			children = (
@@ -59,7 +86,8 @@
 				6F9A45961F72C9D6006B6055 /* AppDelegate.swift */,
 				6F9A45981F72C9D6006B6055 /* ProfileViewController.swift */,
 				6F9A459A1F72C9D6006B6055 /* Profile.storyboard */,
-				6F9A45A81F72D1B6006B6055 /* Media.xcassets */,
+				6F7D273A1F7ED8F4008E9843 /* Universal */,
+				6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */,
 				6F9A459D1F72C9D6006B6055 /* Assets.xcassets */,
 				6F9A459F1F72C9D6006B6055 /* LaunchScreen.storyboard */,
 				6F9A45A21F72C9D6006B6055 /* Info.plist */,
@@ -128,7 +156,7 @@
 			files = (
 				6F9A45A11F72C9D6006B6055 /* LaunchScreen.storyboard in Resources */,
 				6F9A459E1F72C9D6006B6055 /* Assets.xcassets in Resources */,
-				6F9A45A91F72D1B6006B6055 /* Media.xcassets in Resources */,
+				6F9A45A91F72D1B6006B6055 /* ProfileMedia.xcassets in Resources */,
 				6F9A459C1F72C9D6006B6055 /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +169,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F9A45991F72C9D6006B6055 /* ProfileViewController.swift in Sources */,
+				6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */,
+				6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */,
+				6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */,
 				6F9A45971F72C9D6006B6055 /* AppDelegate.swift in Sources */,
+				6F7D273D1F7ED91A008E9843 /* UIColor+AppColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
