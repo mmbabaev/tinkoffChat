@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ProfileViewController: UIViewController {
     
@@ -74,11 +75,15 @@ class ProfileViewController: UIViewController {
     private func alertSheetAction(for sourceType: UIImagePickerControllerSourceType) -> UIAlertAction {
         let title = sourceType == .camera ? "Камера" : "Фото"
         let action = UIAlertAction(title: title, style: .default) { _ in
+            let cameraStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+            if sourceType == .camera && cameraStatus == .denied {
+                self.showSettingsAlert()
+                return
+            }
+            
             if UIImagePickerController.isSourceTypeAvailable(sourceType) {
                 self.imagePicker.sourceType = sourceType
                 self.present(self.imagePicker, animated: true, completion: nil)
-            } else {
-                self.showSettingsAlert()
             }
         }
         
@@ -86,7 +91,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func showSettingsAlert() {
-        let alert = UIAlertController(title: "У приложения нет доступа к камере или фотографиям", message: "Разрешите использовать камеру или фотографии в настройках", preferredStyle: .alert)
+        let alert = UIAlertController(title: "У приложения нет доступа к камере", message: "Разрешите использовать камеру в настройках", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             if let url = URL(string:UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(url)
