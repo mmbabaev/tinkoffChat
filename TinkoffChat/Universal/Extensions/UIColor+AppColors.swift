@@ -10,6 +10,10 @@ import UIKit
 
 extension UIColor {
     
+    static let tinkoffYellow: UIColor = {
+        return UIColor(hex: "#FEDB43")
+    }()
+    
     static let iconBackground: UIColor = {
         return UIColor(hex: "#3F78F0")
     }()
