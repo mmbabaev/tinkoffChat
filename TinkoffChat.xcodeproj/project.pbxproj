@@ -59,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F62175E1F9445DC0030275C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6F9A45981F72C9D6006B6055 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		6F7D273A1F7ED8F4008E9843 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +106,10 @@
 		6F9A45951F72C9D6006B6055 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				6F62175E1F9445DC0030275C /* Profile */,
 				6FF06D661F942F5000A5D90F /* ConversationsList */,
 				6FF06D651F942F4400A5D90F /* Conversation */,
 				6F9A45961F72C9D6006B6055 /* AppDelegate.swift */,
-				6F9A45981F72C9D6006B6055 /* ProfileViewController.swift */,
 				6F9A459A1F72C9D6006B6055 /* Main.storyboard */,
 				6F7D273A1F7ED8F4008E9843 /* Universal */,
 				6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */,

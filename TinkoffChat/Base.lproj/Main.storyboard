@@ -100,15 +100,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PvW-Og-hBh"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Z9w-lb-5X5"/>
+                    <navigationItem key="navigationItem" id="Z9w-lb-5X5">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="profileIcon" id="RhW-8D-KE6">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="0YC-DJ-8N9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Egb-10-7Ph" id="Ecu-lc-rcN"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="showProfile" id="gcQ-6G-mEo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJA-5k-hu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="397"/>
+            <point key="canvasLocation" x="-861" y="395"/>
         </scene>
         <!--Conversation View Controller-->
         <scene sceneID="8YK-KB-0Ft">
@@ -322,11 +327,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41" y="-204"/>
+            <point key="canvasLocation" x="-41" y="-96"/>
         </scene>
     </scenes>
     <resources>
         <image name="avatar" width="300" height="300"/>
         <image name="camera" width="50" height="50"/>
+        <image name="profileIcon" width="25" height="25"/>
     </resources>
 </document>
