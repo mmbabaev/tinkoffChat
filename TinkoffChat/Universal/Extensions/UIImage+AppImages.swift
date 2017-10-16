@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    static let defaultAvatar: UIImage? = {
-        return UIImage(named: "avatar")
+    static let defaultAvatar: UIImage = {
+        return UIImage(named: "avatar")!
     }()
 }

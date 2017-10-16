@@ -14,6 +14,12 @@ extension FileManager {
     }
     
     func save(data: Data, to file: String) -> Bool {
+        if let oldData = read(from: file),
+            oldData == data {
+            // Don't save data if we have equals one
+            return true
+        }
+        
         if let dir = documentDirectory {
             let fileURL = dir.appendingPathComponent(file)
             

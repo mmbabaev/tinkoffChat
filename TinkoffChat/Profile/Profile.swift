@@ -8,7 +8,8 @@
 
 import UIKit
 
-class Profile: NSCoding {
+class Profile: NSObject, NSCoding {
+    
     var image: UIImage
     var name: String
     var about: String

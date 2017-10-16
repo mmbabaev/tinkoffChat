@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIViewController {
-    private func errorAlertController(title: String? = nil, message: String, repeatedBlock: (() -> Void)?) -> UIAlertController {
-        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func errorAlertController(message: String, repeatedBlock: (() -> Void)?) -> UIAlertController {
+        let controller = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         
@@ -27,9 +27,17 @@ extension UIViewController {
         return controller
     }
     
-    func showAlert(title: String? = nil, message: String) {
-        let controller = errorAlertController(title: title, message: message, repeatedBlock: nil)
+    func showErrorAlert(message: String, repeatedBlock: (() -> Void)? = nil) {
+        let controller = errorAlertController(message: message, repeatedBlock: repeatedBlock)
         
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    func showAlert(title: String = "", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

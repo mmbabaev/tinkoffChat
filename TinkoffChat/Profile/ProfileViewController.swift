@@ -9,30 +9,65 @@
 import UIKit
 import AVFoundation
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     
     @IBOutlet weak var aboutField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     
-    @IBOutlet private weak var profileImageView: UIImageView!
-   @IBOutlet private weak var cameraButton: UIButton!
-
-    private let imagePicker = UIImagePickerController()
+    @IBOutlet weak var profileScrollView: UIScrollView!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var cameraButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var gcdButton: RoundButton!
+    @IBOutlet weak var operationButton: RoundButton!
+    
+    var activeField: UITextField?
+    var scrollView: UIScrollView {
+        return profileScrollView
     }
+    
+    private var profile: Profile? = nil
+    
+    private let imagePicker = UIImagePickerController()
+    private let gcdDataManager = GCDDataManager()
+    private let operationDataManager = OperationDataManager()
+    
+    private let fileName = "tinkoff_profile_data"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Профиль"
         
         cameraButton.backgroundColor = .iconBackground
         cameraButton.roundCorners()
         profileImageView.layer.cornerRadius = cameraButton.layer.cornerRadius
         
-        
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
+        
+        nameField.delegate = self
+        aboutField.delegate = self
+    
+        scrollView.keyboardDismissMode = .onDrag
+        
+        readProfile(dataManager: operationDataManager)
+        
+        setButtons(enabled: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.deregisterFromKeyboardNotifications()
     }
     
     @IBAction private func cameraAction(_ sender: UIButton) {
@@ -86,6 +121,112 @@ class ProfileViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func saveProfileOperation(_ sender: RoundButton) {
+        self.saveProfile(dataManager: operationDataManager)
+    }
+    @IBAction func saveProfileGCD(_ sender: RoundButton) {
+        self.saveProfile(dataManager: gcdDataManager)
+    }
+    
+    func saveProfile(dataManager: DataManager) {
+        let name = nameField.textValue
+        let about = aboutField.textValue
+        let image = profileImageView.image ?? UIImage.defaultAvatar
+        
+        let newProfile = Profile(name: name, about: about, image: image)
+        
+        let newData = NSKeyedArchiver.archivedData(withRootObject: newProfile)
+        
+        self.startLoading()
+        dataManager.save(data: newData, to: fileName) {
+            success in
+            
+            self.endLoading()
+            
+            if success {
+                self.profile = newProfile
+                self.setButtons(enabled: false)
+                self.showAlert(message: "Данные сохранены")
+            } else {
+                self.showErrorAlert(message: "Не увдалось сохранить данные") {
+                    self.saveProfile(dataManager: dataManager)
+                }
+            }
+        }
+    }
+    
+    func readProfile(dataManager: DataManager) {
+        self.startLoading()
+        
+        dataManager.read(from: fileName) {
+            data in
+            
+            self.endLoading()
+            
+            if let data = data,
+                let profile = NSKeyedUnarchiver.unarchiveObject(with: data) as? Profile {
+                
+                self.profile = profile
+                
+                self.nameField.text = profile.name
+                self.aboutField.text = profile.about
+                self.profileImageView.image = profile.image
+            }
+        }
+    }
+    
+    private func startLoading() {
+        setButtons(enabled: false)
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+    }
+    
+    private func endLoading() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    private func setButtons(enabled: Bool) {
+        gcdButton.isEnabled = enabled
+        operationButton.isEnabled = enabled
+    }
+    
+    @IBAction func dismissClicked(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK - UITextFieldDelegate
+
+extension ProfileViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameField {
+            aboutField.becomeFirstResponder()
+        } else {
+            self.view.endEditing(true)
+        }
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if !activityIndicator.isAnimating {
+            setButtons(enabled: true)
+        }
+        
+        return true
+    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -93,8 +234,14 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = (info[UIImagePickerControllerEditedImage] ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+            
             profileImageView.image = image
+            
+            if !activityIndicator.isAnimating {
+                setButtons(enabled: true)
+            }
         }
+        
         
         self.dismiss(animated: true, completion: nil)
     }

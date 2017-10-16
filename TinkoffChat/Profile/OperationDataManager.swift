@@ -52,7 +52,7 @@ class DataWriteOperation: Operation {
     }
 }
 
-class OperationManager: DataManager {
+class OperationDataManager: DataManager {
     let queue = OperationQueue()
     
     func save(data: Data, to file: String, callback: @escaping (Bool) -> Void) {
