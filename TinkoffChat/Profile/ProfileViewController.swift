@@ -11,25 +11,16 @@ import AVFoundation
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet private weak var editButton: RoundButton!
+    @IBOutlet weak var aboutField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    
     @IBOutlet private weak var profileImageView: UIImageView!
-    @IBOutlet private weak var cameraButton: UIButton!
+   @IBOutlet private weak var cameraButton: UIButton!
 
     private let imagePicker = UIImagePickerController()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        // print editButton == nil, loadView еще не вызван
-        printEditButtonFrame()
-    }
-    
-    private func printEditButtonFrame() {
-        if let editButton = editButton {
-            print("Edit button's frame: \(editButton.frame)")
-        } else {
-            print("editButton is nil")
-        }
     }
     
     override func viewDidLoad() {
@@ -39,18 +30,9 @@ class ProfileViewController: UIViewController {
         cameraButton.roundCorners()
         profileImageView.layer.cornerRadius = cameraButton.layer.cornerRadius
         
-        // viewLayoutSubviews() еще не вызван, значение фрейма берется из сториборда
-        printEditButtonFrame()
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // viewLayoutSubviews() вызван, констрейнты и фреймы настроены
-        printEditButtonFrame()
     }
     
     @IBAction private func cameraAction(_ sender: UIButton) {
