@@ -24,6 +24,9 @@
 		6F9A45A91F72D1B6006B6055 /* ProfileMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */; };
 		6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */; };
 		6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA00A1F81F41C003033FF /* RoundButton.swift */; };
+		6F9DE7F31F97BC7500BCF910 /* MCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F21F97BC7500BCF910 /* MCManager.swift */; };
+		6F9DE7F51F97BD4200BCF910 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F41F97BD4200BCF910 /* Message.swift */; };
+		6F9DE7F71F97BEC700BCF910 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F61F97BEC700BCF910 /* User.swift */; };
 		6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */; };
 		6FDED8771F94DF97003264ED /* ScrollViewKeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDED8761F94DF97003264ED /* ScrollViewKeyboardHandler.swift */; };
 		6FF06D5C1F94060400A5D90F /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF06D5B1F94060400A5D90F /* ConversationsListViewController.swift */; };
@@ -32,7 +35,6 @@
 		6FF06D621F94213D00A5D90F /* DateFormatter+AppFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF06D611F94213D00A5D90F /* DateFormatter+AppFormatters.swift */; };
 		6FF06D641F942B2100A5D90F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF06D631F942B2100A5D90F /* ConversationViewController.swift */; };
 		6FF06D681F942F7F00A5D90F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF06D671F942F7F00A5D90F /* MessageTableViewCell.swift */; };
-		6FF06D6A1F9431D200A5D90F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF06D691F9431D200A5D90F /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,9 @@
 		6F9A45A81F72D1B6006B6055 /* ProfileMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ProfileMedia.xcassets; sourceTree = "<group>"; };
 		6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
 		6F9AA00A1F81F41C003033FF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		6F9DE7F21F97BC7500BCF910 /* MCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCManager.swift; sourceTree = "<group>"; };
+		6F9DE7F41F97BD4200BCF910 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		6F9DE7F61F97BEC700BCF910 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		6FDED8761F94DF97003264ED /* ScrollViewKeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboardHandler.swift; sourceTree = "<group>"; };
 		6FF06D5B1F94060400A5D90F /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +68,6 @@
 		6FF06D611F94213D00A5D90F /* DateFormatter+AppFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+AppFormatters.swift"; sourceTree = "<group>"; };
 		6FF06D631F942B2100A5D90F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		6FF06D671F942F7F00A5D90F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		6FF06D691F9431D200A5D90F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 		6F9A45951F72C9D6006B6055 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				6F9DE7F11F97BC6700BCF910 /* Multipeer */,
 				6F62175E1F9445DC0030275C /* Profile */,
 				6FF06D661F942F5000A5D90F /* ConversationsList */,
 				6FF06D651F942F4400A5D90F /* Conversation */,
@@ -145,6 +150,16 @@
 				6F9A45A21F72C9D6006B6055 /* Info.plist */,
 			);
 			path = TinkoffChat;
+			sourceTree = "<group>";
+		};
+		6F9DE7F11F97BC6700BCF910 /* Multipeer */ = {
+			isa = PBXGroup;
+			children = (
+				6F9DE7F21F97BC7500BCF910 /* MCManager.swift */,
+				6F9DE7F41F97BD4200BCF910 /* Message.swift */,
+				6F9DE7F61F97BEC700BCF910 /* User.swift */,
+			);
+			path = Multipeer;
 			sourceTree = "<group>";
 		};
 		6FF06D651F942F4400A5D90F /* Conversation */ = {
@@ -162,7 +177,6 @@
 			children = (
 				6FF06D631F942B2100A5D90F /* ConversationViewController.swift */,
 				6FF06D671F942F7F00A5D90F /* MessageTableViewCell.swift */,
-				6FF06D691F9431D200A5D90F /* Message.swift */,
 			);
 			path = ConversationsList;
 			sourceTree = "<group>";
@@ -243,6 +257,7 @@
 				6FF06D5E1F940E9800A5D90F /* ConversationTableViewCell.swift in Sources */,
 				6F6217641F94536F0030275C /* DataManager.swift in Sources */,
 				6F9A45991F72C9D6006B6055 /* ProfileViewController.swift in Sources */,
+				6F9DE7F71F97BEC700BCF910 /* User.swift in Sources */,
 				6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */,
 				6FF06D601F940F2900A5D90F /* Conversation.swift in Sources */,
 				6F6217601F94535E0030275C /* GCDDataManager.swift in Sources */,
@@ -253,13 +268,14 @@
 				6F62176A1F94AAC40030275C /* FileManager.swift in Sources */,
 				6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */,
 				6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */,
+				6F9DE7F31F97BC7500BCF910 /* MCManager.swift in Sources */,
 				6F9A45971F72C9D6006B6055 /* AppDelegate.swift in Sources */,
-				6FF06D6A1F9431D200A5D90F /* Message.swift in Sources */,
 				6F6217621F9453680030275C /* OperationDataManager.swift in Sources */,
 				6F62176C1F94BAD30030275C /* Constants.swift in Sources */,
 				6F6217661F9453C10030275C /* UIViewController+Alerts.swift in Sources */,
 				6F62176E1F94BC940030275C /* UITextField+Value.swift in Sources */,
 				6FF06D5C1F94060400A5D90F /* ConversationsListViewController.swift in Sources */,
+				6F9DE7F51F97BD4200BCF910 /* Message.swift in Sources */,
 				6FF06D641F942B2100A5D90F /* ConversationViewController.swift in Sources */,
 				6F7D273D1F7ED91A008E9843 /* UIColor+AppColors.swift in Sources */,
 			);

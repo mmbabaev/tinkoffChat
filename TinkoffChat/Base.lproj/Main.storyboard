@@ -101,6 +101,11 @@
                         <viewLayoutGuide key="safeArea" id="PvW-Og-hBh"/>
                     </view>
                     <navigationItem key="navigationItem" id="Z9w-lb-5X5">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="dR2-9F-hR7">
+                            <connections>
+                                <action selector="multipeer:" destination="Wmp-aj-osY" id="Npu-Rv-5hY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="profileIcon" id="RhW-8D-KE6">
                             <connections>
                                 <segue destination="zu2-5a-xO0" kind="presentation" id="8yU-lp-z3b"/>

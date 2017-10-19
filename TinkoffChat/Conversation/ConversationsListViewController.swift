@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ConversationsListViewController: UIViewController {
 
@@ -19,6 +20,16 @@ class ConversationsListViewController: UIViewController {
     private let onlineConversations = Conversation.testConversations
     private let historyConversations = Conversation.testConversations
     
+    
+    @IBAction func multipeer(_ sender: Any) {
+        let manager = MCManager.shared
+        
+        manager.browser.startBrowsingForPeers()
+        
+        let vc = MCBrowserViewController(browser: manager.browser, session: manager.session)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +37,8 @@ class ConversationsListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

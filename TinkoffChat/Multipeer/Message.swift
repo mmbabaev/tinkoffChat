@@ -2,11 +2,20 @@
 //  Message.swift
 //  TinkoffChat
 //
-//  Created by Mihail Babaev on 16.10.17.
+//  Created by Mihail Babaev on 18.10.17.
 //  Copyright © 2017 mbabaev. All rights reserved.
 //
 
 import Foundation
+
+struct MCMessage: Encodable, Decodable {
+    let eventType: String
+    let messageId: String
+    let text: String
+}
+
+
+
 
 struct Message {
     private(set) var text: String
