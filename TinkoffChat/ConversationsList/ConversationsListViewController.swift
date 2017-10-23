@@ -16,11 +16,15 @@ class ConversationsListViewController: UIViewController {
     private let cellId = "ConversationCellIdentifier"
     
     private let sections = ["Online", "History"]
-    private let onlineConversations = Conversation.testConversations
-    private let historyConversations = Conversation.testConversations
+    private var onlineUsers: [User] = []
+    private let historyConversations = [User]()
+    
+    private var manager: CommunicationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manager = CommunicationManager(delegate: self)
 
         self.title = "Tinkoff Chat"
         
@@ -34,19 +38,17 @@ class ConversationsListViewController: UIViewController {
             segue.identifier == "showConversation" {
             
             let row = selectedIndexPath.row
-            let conversation: Conversation
+            
             if selectedIndexPath.section == onlineSection {
-                conversation = onlineConversations[row]
+                vc.user = onlineUsers[row]
             } else {
-                conversation = historyConversations[row]
+                vc.user = historyConversations[row]
             }
             
-            vc.conversation = conversation
+            vc.manager = manager
             
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
-        
-        
     }
 }
 
@@ -65,37 +67,52 @@ extension ConversationsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == onlineSection {
-            return onlineConversations.count
+            return onlineUsers.count
         }
         
         return historyConversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let conversation: Conversation
+        let user: User
         let online: Bool
         
         if indexPath.section == onlineSection {
-            conversation = onlineConversations[indexPath.row]
+            user = onlineUsers[indexPath.row]
             online = true
         } else {
-            conversation = historyConversations[indexPath.row]
+            user = historyConversations[indexPath.row]
             online = false
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
         if let cellConfiguration = cell as? ConversationCellConfiguration {
-            cellConfiguration.name = conversation.name
-            cellConfiguration.message = conversation.lastMessage
-            cellConfiguration.hasUnreadMessage = conversation.hasUnreadMessages
-            cellConfiguration.date = conversation.date
+            cellConfiguration.name = user.name
+            
+            cellConfiguration.message = user.lastMessage?.text
+            cellConfiguration.hasUnreadMessage = user.hasUnreadMessages
+            cellConfiguration.date = user.lastMessage?.date
             cellConfiguration.online = online
         }
         
         return cell
     }
     
+    func reload() {
+        onlineUsers = manager.onlineUsers
+        
+        tableView.reloadData()
+    }
+}
+
+extension ConversationsListViewController: CommunicationDelegate {
+    func didUsersUpdate() {
+        self.reload()
+    }
+    
     
 }
+
+
 

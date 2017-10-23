@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oxb-45-KRj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="732"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="IncomingMessageCellId" rowHeight="97" id="A0x-Yl-GSc" customClass="MessageTableViewCell" customModule="TinkoffChat" customModuleProvider="target">
@@ -181,23 +181,57 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25j-qw-NVJ">
+                                <rect key="frame" x="0.0" y="732" width="375" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoR-ic-2ua">
+                                        <rect key="frame" x="290" y="8" width="77" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="udd-mi-fap"/>
+                                        </constraints>
+                                        <state key="normal" title="Отправить"/>
+                                        <connections>
+                                            <action selector="sendClicked:" destination="BgP-Yr-DYD" eventType="touchUpInside" id="IF4-tO-tBd"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0S-I1-XE6">
+                                        <rect key="frame" x="8" y="8" width="274" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="X0S-I1-XE6" firstAttribute="leading" secondItem="25j-qw-NVJ" secondAttribute="leading" constant="8" id="3FZ-g3-Ez8"/>
+                                    <constraint firstItem="X0S-I1-XE6" firstAttribute="centerY" secondItem="25j-qw-NVJ" secondAttribute="centerY" id="MCV-VG-gEc"/>
+                                    <constraint firstAttribute="bottom" secondItem="BoR-ic-2ua" secondAttribute="bottom" constant="8" id="TQJ-ZU-UeH"/>
+                                    <constraint firstItem="BoR-ic-2ua" firstAttribute="top" secondItem="25j-qw-NVJ" secondAttribute="top" constant="8" id="jyD-Af-vly"/>
+                                    <constraint firstAttribute="trailing" secondItem="BoR-ic-2ua" secondAttribute="trailing" constant="8" id="kiN-iD-lhs"/>
+                                    <constraint firstItem="BoR-ic-2ua" firstAttribute="leading" secondItem="X0S-I1-XE6" secondAttribute="trailing" constant="8" id="yIJ-aX-2nE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="25j-qw-NVJ" firstAttribute="top" secondItem="oxb-45-KRj" secondAttribute="bottom" id="9Sm-X8-al4"/>
                             <constraint firstItem="oxb-45-KRj" firstAttribute="top" secondItem="ZT7-Hs-u7a" secondAttribute="top" id="D2U-Al-MiJ"/>
+                            <constraint firstItem="25j-qw-NVJ" firstAttribute="leading" secondItem="s5p-fA-1aU" secondAttribute="leading" id="NhI-FW-PUa"/>
                             <constraint firstItem="oxb-45-KRj" firstAttribute="trailing" secondItem="s5p-fA-1aU" secondAttribute="trailing" id="OAi-FB-DV4"/>
                             <constraint firstItem="oxb-45-KRj" firstAttribute="leading" secondItem="s5p-fA-1aU" secondAttribute="leading" id="Tns-SF-4Ds"/>
-                            <constraint firstItem="oxb-45-KRj" firstAttribute="bottom" secondItem="s5p-fA-1aU" secondAttribute="bottom" id="hn0-b8-kny"/>
+                            <constraint firstItem="s5p-fA-1aU" firstAttribute="bottom" secondItem="25j-qw-NVJ" secondAttribute="bottom" id="ppr-4Z-eMX"/>
+                            <constraint firstItem="25j-qw-NVJ" firstAttribute="trailing" secondItem="s5p-fA-1aU" secondAttribute="trailing" id="rH4-n5-m2y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s5p-fA-1aU"/>
                     </view>
                     <connections>
+                        <outlet property="messageTextField" destination="X0S-I1-XE6" id="mKf-kI-3PI"/>
                         <outlet property="tableView" destination="oxb-45-KRj" id="gH4-kN-lcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFy-yJ-5aO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="648"/>
+            <point key="canvasLocation" x="-60" y="646.55172413793105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DTR-AN-uje">
@@ -266,7 +300,6 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.97516556190000003" green="1" blue="0.52978011400000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="bS7-dX-Xb0" firstAttribute="leading" secondItem="iho-bh-mfF" secondAttribute="leading" constant="16" id="3B7-0C-aYu"/>
                                                     <constraint firstAttribute="bottom" secondItem="bS7-dX-Xb0" secondAttribute="bottom" constant="16" id="3oz-0b-NmO"/>
