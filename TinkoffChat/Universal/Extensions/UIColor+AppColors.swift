@@ -21,7 +21,7 @@ extension UIColor {
     convenience init(hex: String) {
         let scanner = Scanner(string: hex)
         
-        if hex.characters.contains("#") {
+        if hex.contains("#") {
             scanner.scanLocation = 1
         } else {
             scanner.scanLocation = 0
