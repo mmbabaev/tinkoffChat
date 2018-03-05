@@ -27,7 +27,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bS7-dX-Xb0">
                                                 <rect key="frame" x="16" y="16" width="343" height="343"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-9t-Wod">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-9t-Wod">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="deQ-9t-Wod" secondAttribute="height" multiplier="1:1" id="ivi-e5-M6n"/>
