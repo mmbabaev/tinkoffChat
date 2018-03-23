@@ -47,6 +47,9 @@
 
 - (void)changeTheme:(UIColor *)theme {
     self.view.backgroundColor = theme;
+    [[UINavigationBar appearance] setBarTintColor:theme];
+    
+    
     if (_delegate) {
         [_delegate themesViewController:self didSelectTheme:theme];
     }
