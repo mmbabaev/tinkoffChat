@@ -44,9 +44,23 @@ class ConversationsListViewController: UIViewController {
             vc.conversation = conversation
             
             tableView.deselectRow(at: selectedIndexPath, animated: true)
+            
+            return
         }
         
-        
+        if let vc = segue.destination as? ThemesViewController {
+            vc.delegate = self
+        }
+    }
+}
+
+extension ConversationsListViewController: ThemesViewControllerDelegate {
+    func themesViewController(_ controller: ThemesViewController!, didSelectTheme selectedTheme: UIColor!) {
+        self.logThemeChanging(selectedTheme: selectedTheme)
+    }
+    
+    func logThemeChanging(selectedTheme: UIColor) {
+        print(selectedTheme)
     }
 }
 
@@ -95,7 +109,5 @@ extension ConversationsListViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
