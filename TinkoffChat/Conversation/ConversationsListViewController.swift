@@ -20,14 +20,21 @@ class ConversationsListViewController: UIViewController {
     private let onlineConversations = Conversation.testConversations
     private let historyConversations = Conversation.testConversations
     
+    let manager = MCServiceManager()
     
     @IBAction func multipeer(_ sender: Any) {
-        let manager = MCManager.shared
+        manager.send(colorName: "Blablaba")
+        //let manager = ColorServiceManager()
         
-        manager.browser.startBrowsingForPeers()
+        //manager.stop()
         
-        let vc = MCBrowserViewController(browser: manager.browser, session: manager.session)
-        self.navigationController?.pushViewController(vc, animated: true)
+        //manager.browser.startBrowsingForPeers()
+        
+        //let vc = MCBrowserViewController(serviceType: "tinkoff-chat", session: manager.session)
+        
+        //self.navigationController?.pushViewController(vc, animated: true)
+        
+        //manager.start()
     }
     
     override func viewDidLoad() {
