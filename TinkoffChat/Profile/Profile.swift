@@ -8,9 +8,13 @@
 
 import UIKit
 
-class Profile: NSObject, NSCoding {
+class Profile: Codable {
     
-    var image: UIImage
+    enum CodingKeys: String, CodingKey {
+        case name, about, image
+    }
+    
+    var image: UIImage?
     var name: String
     var about: String
     
@@ -20,26 +24,24 @@ class Profile: NSObject, NSCoding {
         self.image = image
     }
     
-    required convenience init?(coder aDecoder: NSCoder) {
-        guard let imageData = aDecoder.decodeObject(forKey: imageKey) as? Data,
-            let name = aDecoder.decodeObject(forKey: nameKey) as? String,
-            let about = aDecoder.decodeObject(forKey: aboutKey) as? String,
-            let image = UIImage(data: imageData) else {
-                return nil
-        }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(about, forKey: .about)
         
-        self.init(name: name, about: about, image: image)
+        var imageData: Data? = nil
+        if let image = image {
+            imageData = UIImagePNGRepresentation(image)
+        }
+        try container.encode(imageData, forKey: .image)
     }
     
-    func encode(with aCoder: NSCoder) {
-        let imageData = UIImagePNGRepresentation(image)
-        aCoder.encode(imageData, forKey: imageKey)
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        about = try container.decode(String.self, forKey: .about)
         
-        aCoder.encode(self.name, forKey: nameKey)
-        aCoder.encode(self.about, forKey: aboutKey)
+        let imageData = try container.decode(Data.self, forKey: .image)
+        image = UIImage(data: imageData)
     }
 }
-
-private let imageKey = "imageData"
-private let nameKey = "name"
-private let aboutKey = "about"

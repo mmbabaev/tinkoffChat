@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     
     @IBOutlet weak var gcdButton: RoundButton!
     @IBOutlet weak var operationButton: RoundButton!
+    @IBOutlet weak var editButton: RoundButton!
+
     
     var activeField: UITextField?
     var scrollView: UIScrollView {
@@ -41,6 +43,9 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
         
         self.title = "Профиль"
         
+        profileImageView.backgroundColor = UIColor.lightGray
+        
+        cameraButton.isEnabled = false
         cameraButton.backgroundColor = .iconBackground
         cameraButton.roundCorners()
         profileImageView.layer.cornerRadius = cameraButton.layer.cornerRadius
@@ -90,6 +95,7 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     }
     
     private func alertSheetAction(for sourceType: UIImagePickerControllerSourceType) -> UIAlertAction {
+        
         let title = sourceType == .camera ? "Камера" : "Фото"
         let action = UIAlertAction(title: title, style: .default) { _ in
             let cameraStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
@@ -129,6 +135,15 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
         self.saveProfile(dataManager: gcdDataManager)
     }
     
+    @IBAction func setEditingMode(_ sender: RoundButton) {
+        self.editButton.isHidden = true
+        self.gcdButton.isHidden = false
+        self.operationButton.isHidden = false
+        cameraButton.isEnabled = true
+        
+        self.isEditing = true
+    }
+    
     func saveProfile(dataManager: DataManager) {
         let name = nameField.textValue
         let about = aboutField.textValue
@@ -136,7 +151,11 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
         
         let newProfile = Profile(name: name, about: about, image: image)
         
-        let newData = NSKeyedArchiver.archivedData(withRootObject: newProfile)
+        let encoder = JSONEncoder()
+        guard let newData = try? encoder.encode(newProfile) else {
+            self.showSaveDataError(dataManager: dataManager)
+            return
+        }
         
         self.startLoading()
         dataManager.save(data: newData, to: fileName) {
@@ -149,10 +168,14 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
                 self.setButtons(enabled: false)
                 self.showAlert(message: "Данные сохранены")
             } else {
-                self.showErrorAlert(message: "Не увдалось сохранить данные") {
-                    self.saveProfile(dataManager: dataManager)
-                }
+                self.showSaveDataError(dataManager: dataManager)
             }
+        }
+    }
+    
+    private func showSaveDataError(dataManager: DataManager) {
+        self.showErrorAlert(message: "Не увдалось сохранить данные") {
+            self.saveProfile(dataManager: dataManager)
         }
     }
     
@@ -164,15 +187,17 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
             
             self.endLoading()
             
-            if let data = data,
-                let profile = NSKeyedUnarchiver.unarchiveObject(with: data) as? Profile {
-                
-                self.profile = profile
-                
-                self.nameField.text = profile.name
-                self.aboutField.text = profile.about
-                self.profileImageView.image = profile.image
+            let decoder = JSONDecoder()
+            guard let data = data,
+                let profile = try? decoder.decode(Profile.self, from: data) else {
+                return
             }
+            
+            self.profile = profile
+            
+            self.nameField.text = profile.name
+            self.aboutField.text = profile.about
+            self.profileImageView.image = profile.image
         }
     }
     
@@ -200,6 +225,10 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
 // MARK - UITextFieldDelegate
 
 extension ProfileViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return self.isEditing
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
