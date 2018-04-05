@@ -10,10 +10,6 @@ import Foundation
 
 protocol CommunicationManagerDelegate: class {
     func communicationManagerDidUpdateConversations(_ communicationManager: CommunicationManager)
-    
-    func communicationmanager(_ communicationManager: CommunicationManager,
-                              didUpdateConversation conversation: Conversation,
-                              at row: Int)
 }
 
 class CommunicationManager: CommunicatorDelegate {
@@ -55,10 +51,7 @@ class CommunicationManager: CommunicatorDelegate {
 
     
     func update(conversation: Conversation) {
-        if let index = index(for: conversation.user.id) {
-            delegate?.communicationmanager(self, didUpdateConversation: conversation, at: index)
-        }
-        
+        NotificationCenter.default.post(name: .conversationWasUpdated, object: conversation)
         delegate?.communicationManagerDidUpdateConversations(self)
     }
     
@@ -129,4 +122,8 @@ class CommunicationManager: CommunicatorDelegate {
         conversation.messages.append(message)
         self.update(conversation: conversation)
     }
+}
+
+extension Notification.Name {
+    static let conversationWasUpdated = Notification.Name(rawValue: "conversationWasUpdated")
 }

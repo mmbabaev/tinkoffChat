@@ -8,7 +8,7 @@
 
 import MultipeerConnectivity
 
-let currentName = "mbabaev50"
+let currentName = "mbabaev50000"
 
 protocol Communicator {
     func sendMessage(string: String, to userID: String, completionHandler: ((_ success: Bool, _ error: Error?) -> ())?)

@@ -122,6 +122,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		6F99DDC42076C2F000743E55 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6FD3723920761E8A0095E5BD /* Message.swift */,
+				6FD37235207618CD0095E5BD /* CommunicationManager.swift */,
+				6FD3723720761A810095E5BD /* Conversation.swift */,
+				6F9DE7F61F97BEC700BCF910 /* User.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		6F9A458A1F72C9D6006B6055 = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +152,7 @@
 		6F9A45951F72C9D6006B6055 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
-				6FD3723920761E8A0095E5BD /* Message.swift */,
-				6FD37235207618CD0095E5BD /* CommunicationManager.swift */,
-				6FD3723720761A810095E5BD /* Conversation.swift */,
-				6F9DE7F61F97BEC700BCF910 /* User.swift */,
+				6F99DDC42076C2F000743E55 /* Core */,
 				6F9DE7F11F97BC6700BCF910 /* Multipeer */,
 				6F62175E1F9445DC0030275C /* Profile */,
 				6FF06D661F942F5000A5D90F /* ConversationsList */,
