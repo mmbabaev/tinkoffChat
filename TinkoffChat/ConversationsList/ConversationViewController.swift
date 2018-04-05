@@ -16,9 +16,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     var conversation: Conversation!
-    
-    let messages = Message.testMessages
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,17 +26,23 @@ class ConversationViewController: UIViewController {
         tableView.estimatedRowHeight = 500
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.title = conversation.name
+        self.title = conversation.user.name
+        
+        tableView.reloadData()
+    }
+    
+    func reload() {
+        self.tableView?.reloadData()
     }
 }
 
 extension ConversationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return conversation.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
+        let message = conversation.messages[indexPath.row]
         
         let cellId: String
         if message.isIncoming {

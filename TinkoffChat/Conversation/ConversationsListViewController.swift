@@ -17,20 +17,23 @@ class ConversationsListViewController: UIViewController {
     private let cellId = "ConversationCellIdentifier"
     
     private let sections = ["Online", "History"]
-    private let onlineConversations = Conversation.testConversations
-    private let historyConversations = Conversation.testConversations
-    
-    let manager = MCServiceManager()
+    private var onlineConversations: [Conversation] {
+        return CommunicationManager.shared.onlineConversations
+    }
+    private var historyConversations: [Conversation] {
+        return CommunicationManager.shared.historyConversations
+    }
     
     @IBAction func multipeer(_ sender: Any) {
-        manager.send(colorName: "Blablaba")
+        //manager.send(colorName: "Blablaba")
         //let manager = ColorServiceManager()
         
         //manager.stop()
         
         //manager.browser.startBrowsingForPeers()
         
-        //let vc = MCBrowserViewController(serviceType: "tinkoff-chat", session: manager.session)
+//        let vc = MCBrowserViewController(browser: <#T##MCNearbyServiceBrowser#>, session: <#T##MCSession#>)
+//        let vc = MCBrowserViewController(serviceType: "tinkoff-chat", session: manager.session)
         
         //self.navigationController?.pushViewController(vc, animated: true)
         
@@ -45,8 +48,10 @@ class ConversationsListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        CommunicationManager.shared.delegate = self
     }
+    
+    var currentConversationVC: ConversationViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow,
@@ -62,6 +67,8 @@ class ConversationsListViewController: UIViewController {
             }
             
             vc.conversation = conversation
+            
+            currentConversationVC = vc
             
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
@@ -106,14 +113,33 @@ extension ConversationsListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
         if let cellConfiguration = cell as? ConversationCellConfiguration {
-            cellConfiguration.name = conversation.name
-            cellConfiguration.message = conversation.lastMessage
+            cellConfiguration.name = conversation.user.name
+            cellConfiguration.message = conversation.messages.last?.text
             cellConfiguration.hasUnreadMessage = conversation.hasUnreadMessages
             cellConfiguration.date = conversation.date
             cellConfiguration.online = online
         }
         
         return cell
+    }
+    
+    
+}
+
+extension ConversationsListViewController: CommunicationManagerDelegate {
+    func communicationManagerDidUpdateConversations(_ communicationManager: CommunicationManager) {
+        DispatchQueue.main.async {
+            self.currentConversationVC?.reload()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func communicationmanager(_ communicationManager: CommunicationManager, didUpdateConversation conversation: Conversation, at row: Int) {
+        let indexPath = IndexPath(item: row, section: 0)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     
