@@ -107,7 +107,7 @@
                                 <action selector="multipeer:" destination="Wmp-aj-osY" id="Npu-Rv-5hY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="profileIcon" id="RhW-8D-KE6">
+                        <barButtonItem key="rightBarButtonItem" image="profileIcon" id="RhW-8D-KE6">
                             <connections>
                                 <segue destination="zu2-5a-xO0" kind="presentation" id="8yU-lp-z3b"/>
                             </connections>
@@ -346,7 +346,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="5S2-jX-Fmi" secondAttribute="trailing" constant="16" id="4hq-nm-7An"/>
                                                     <constraint firstItem="v5c-Ru-Bpk" firstAttribute="leading" secondItem="5S2-jX-Fmi" secondAttribute="leading" id="DWJ-JA-JFy"/>
-                                                    <constraint firstItem="bPR-nD-8lB" firstAttribute="centerX" secondItem="v5c-Ru-Bpk" secondAttribute="centerX" id="NXS-pR-0Kt"/>
                                                     <constraint firstItem="5S2-jX-Fmi" firstAttribute="leading" secondItem="PqM-v0-jGP" secondAttribute="leading" constant="16" id="edf-cq-N9B"/>
                                                     <constraint firstItem="v5c-Ru-Bpk" firstAttribute="height" secondItem="5S2-jX-Fmi" secondAttribute="height" id="ha6-ta-eYp"/>
                                                     <constraint firstItem="v5c-Ru-Bpk" firstAttribute="trailing" secondItem="5S2-jX-Fmi" secondAttribute="trailing" id="owd-Al-NzM"/>
@@ -396,6 +395,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="5S2-jX-Fmi" firstAttribute="top" secondItem="iho-bh-mfF" secondAttribute="bottom" constant="8" id="NSW-Zf-ssX"/>
+                                            <constraint firstItem="bPR-nD-8lB" firstAttribute="centerX" secondItem="deQ-9t-Wod" secondAttribute="centerX" id="Yz6-ub-iyg"/>
                                             <constraint firstItem="g8p-wh-tqD" firstAttribute="leading" secondItem="FoP-Mi-D3H" secondAttribute="leading" id="hXX-Im-P23"/>
                                             <constraint firstAttribute="trailing" secondItem="g8p-wh-tqD" secondAttribute="trailing" id="u7Y-Eh-VBE"/>
                                         </constraints>
@@ -441,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eom-gH-OBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="-89"/>
+            <point key="canvasLocation" x="786" y="-234"/>
         </scene>
     </scenes>
     <resources>
