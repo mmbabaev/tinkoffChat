@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+class UserInfo {
     let id: String
     let name: String
     

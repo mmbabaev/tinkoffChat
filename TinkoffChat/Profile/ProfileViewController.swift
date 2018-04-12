@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var gcdButton: RoundButton!
-    @IBOutlet weak var operationButton: RoundButton!
+    @IBOutlet weak var coreDataButton: RoundButton!
     
     var activeField: UITextField?
     var scrollView: UIScrollView {
@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     private let imagePicker = UIImagePickerController()
     private let gcdDataManager = GCDDataManager()
     private let operationDataManager = OperationDataManager()
+    private let storageManager = StorageManager()
     
     private let fileName = "tinkoff_profile_data"
     
@@ -53,7 +54,8 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     
         scrollView.keyboardDismissMode = .onDrag
         
-        readProfile(dataManager: operationDataManager)
+        //readProfile(dataManager: operationDataManager)
+        readCoreData()
         
         setButtons(enabled: false)
     }
@@ -79,7 +81,7 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
         let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
             self.profileImageView.image = .defaultAvatar
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel)
         
         alert.addAction(cameraAction)
         alert.addAction(photosAction)
@@ -122,9 +124,11 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func saveProfileOperation(_ sender: RoundButton) {
-        self.saveProfile(dataManager: operationDataManager)
+    @IBAction func saveProfileCoreData(_ sender: RoundButton) {
+        self.saveCoreData()
+        //self.saveProfile(dataManager: operationDataManager)
     }
+    
     @IBAction func saveProfileGCD(_ sender: RoundButton) {
         self.saveProfile(dataManager: gcdDataManager)
     }
@@ -189,7 +193,7 @@ class ProfileViewController: UIViewController, ScrollViewKeyboardHandler {
     
     private func setButtons(enabled: Bool) {
         gcdButton.isEnabled = enabled
-        operationButton.isEnabled = enabled
+        coreDataButton.isEnabled = enabled
     }
     
     @IBAction func dismissClicked(_ sender: UIBarButtonItem) {
@@ -244,6 +248,53 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Core data profile 
+
+extension ProfileViewController {
+    func saveCoreData() {
+        let name = nameField.textValue
+        let about = aboutField.textValue
+        
+        self.startLoading()
+        
+        let context = storageManager.privateContext
+        
+        context.perform {
+            [weak self] in
+            if let appUser = AppUser.findOrInsertAppUser(with: "CURRENT_USER_IDENTIFIER", in: context),
+                let currentUser = appUser.currentUser {
+                
+                currentUser.name = name
+                currentUser.about = about
+            }
+            
+            self?.storageManager.performSave(context: context) { (success) in
+                self?.coreDataSavedUser(success)
+            }
+        }
+    }
+    
+    private func coreDataSavedUser(_ success: Bool) {
+        DispatchQueue.main.async {
+            
+            self.endLoading()
+            if success {
+                self.showAlert(title: "Успешно", message: "Пользователь сохранен!")
+            } else {
+                self.showErrorAlert(message: "Нет изменений")
+            }
+        }
+    }
+    
+    func readCoreData() {
+        self.endLoading()
+        if let appUser = AppUser.findOrInsertAppUser(with: "CURRENT_USER_IDENTIFIER", in: storageManager.mainContext) {
+            nameField.text = appUser.currentUser?.name
+            aboutField.text = appUser.currentUser?.about
+        }
     }
 }
 

@@ -25,7 +25,13 @@
 		6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */; };
 		6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA00A1F81F41C003033FF /* RoundButton.swift */; };
 		6F9DE7F51F97BD4200BCF910 /* MCMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F41F97BD4200BCF910 /* MCMessage.swift */; };
-		6F9DE7F71F97BEC700BCF910 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F61F97BEC700BCF910 /* User.swift */; };
+		6F9DE7F71F97BEC700BCF910 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DE7F61F97BEC700BCF910 /* UserInfo.swift */; };
+		6FB16A47207FF420004C6066 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A3F207FF420004C6066 /* StorageManager.swift */; };
+		6FB16A49207FF420004C6066 /* AppUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A41207FF420004C6066 /* AppUser+CoreDataProperties.swift */; };
+		6FB16A4A207FF420004C6066 /* AppUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A42207FF420004C6066 /* AppUser+CoreDataClass.swift */; };
+		6FB16A4B207FF420004C6066 /* TinkoffChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A43207FF420004C6066 /* TinkoffChat.xcdatamodeld */; };
+		6FB16A4C207FF420004C6066 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A45207FF420004C6066 /* User+CoreDataProperties.swift */; };
+		6FB16A4D207FF420004C6066 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB16A46207FF420004C6066 /* User+CoreDataClass.swift */; };
 		6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */; };
 		6FD372342075FFE10095E5BD /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD372332075FFE10095E5BD /* Communicator.swift */; };
 		6FD37236207618CD0095E5BD /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD37235207618CD0095E5BD /* CommunicationManager.swift */; };
@@ -60,7 +66,13 @@
 		6F9AA0081F81F1D7003033FF /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
 		6F9AA00A1F81F41C003033FF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6F9DE7F41F97BD4200BCF910 /* MCMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCMessage.swift; sourceTree = "<group>"; };
-		6F9DE7F61F97BEC700BCF910 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6F9DE7F61F97BEC700BCF910 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		6FB16A3F207FF420004C6066 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		6FB16A41207FF420004C6066 /* AppUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6FB16A42207FF420004C6066 /* AppUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6FB16A44207FF420004C6066 /* TinkoffChatModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffChatModel.xcdatamodel; sourceTree = "<group>"; };
+		6FB16A45207FF420004C6066 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6FB16A46207FF420004C6066 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6FC2EAFE1F820F3900DD40A9 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		6FD372332075FFE10095E5BD /* Communicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		6FD37235207618CD0095E5BD /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
@@ -128,7 +140,7 @@
 				6FD3723920761E8A0095E5BD /* Message.swift */,
 				6FD37235207618CD0095E5BD /* CommunicationManager.swift */,
 				6FD3723720761A810095E5BD /* Conversation.swift */,
-				6F9DE7F61F97BEC700BCF910 /* User.swift */,
+				6F9DE7F61F97BEC700BCF910 /* UserInfo.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 		6F9A45951F72C9D6006B6055 /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				6FB16A3E207FF420004C6066 /* CoreData */,
 				6F99DDC42076C2F000743E55 /* Core */,
 				6F9DE7F11F97BC6700BCF910 /* Multipeer */,
 				6F62175E1F9445DC0030275C /* Profile */,
@@ -175,6 +188,19 @@
 				6FD372332075FFE10095E5BD /* Communicator.swift */,
 			);
 			path = Multipeer;
+			sourceTree = "<group>";
+		};
+		6FB16A3E207FF420004C6066 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6FB16A3F207FF420004C6066 /* StorageManager.swift */,
+				6FB16A41207FF420004C6066 /* AppUser+CoreDataProperties.swift */,
+				6FB16A42207FF420004C6066 /* AppUser+CoreDataClass.swift */,
+				6FB16A43207FF420004C6066 /* TinkoffChat.xcdatamodeld */,
+				6FB16A45207FF420004C6066 /* User+CoreDataProperties.swift */,
+				6FB16A46207FF420004C6066 /* User+CoreDataClass.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		6FF06D651F942F4400A5D90F /* Conversation */ = {
@@ -272,17 +298,22 @@
 				6FF06D5E1F940E9800A5D90F /* ConversationTableViewCell.swift in Sources */,
 				6F6217641F94536F0030275C /* DataManager.swift in Sources */,
 				6F9A45991F72C9D6006B6055 /* ProfileViewController.swift in Sources */,
-				6F9DE7F71F97BEC700BCF910 /* User.swift in Sources */,
+				6F9DE7F71F97BEC700BCF910 /* UserInfo.swift in Sources */,
 				6F9AA00B1F81F41C003033FF /* RoundButton.swift in Sources */,
 				6F6217601F94535E0030275C /* GCDDataManager.swift in Sources */,
 				6FF06D621F94213D00A5D90F /* DateFormatter+AppFormatters.swift in Sources */,
+				6FB16A4D207FF420004C6066 /* User+CoreDataClass.swift in Sources */,
+				6FB16A4A207FF420004C6066 /* AppUser+CoreDataClass.swift in Sources */,
 				6F6217681F945B710030275C /* Profile.swift in Sources */,
 				6FD3723A20761E8A0095E5BD /* Message.swift in Sources */,
 				6FF06D681F942F7F00A5D90F /* MessageTableViewCell.swift in Sources */,
 				6FDED8771F94DF97003264ED /* ScrollViewKeyboardHandler.swift in Sources */,
 				6FD3723820761A810095E5BD /* Conversation.swift in Sources */,
+				6FB16A49207FF420004C6066 /* AppUser+CoreDataProperties.swift in Sources */,
 				6F62176A1F94AAC40030275C /* FileManager.swift in Sources */,
+				6FB16A47207FF420004C6066 /* StorageManager.swift in Sources */,
 				6F9AA0091F81F1D7003033FF /* UIView+CornerRadius.swift in Sources */,
+				6FB16A4C207FF420004C6066 /* User+CoreDataProperties.swift in Sources */,
 				6FC2EAFF1F820F3900DD40A9 /* UIImage+AppImages.swift in Sources */,
 				6FD372342075FFE10095E5BD /* Communicator.swift in Sources */,
 				6F9A45971F72C9D6006B6055 /* AppDelegate.swift in Sources */,
@@ -291,6 +322,7 @@
 				6F6217661F9453C10030275C /* UIViewController+Alerts.swift in Sources */,
 				6F62176E1F94BC940030275C /* UITextField+Value.swift in Sources */,
 				6FF06D5C1F94060400A5D90F /* ConversationsListViewController.swift in Sources */,
+				6FB16A4B207FF420004C6066 /* TinkoffChat.xcdatamodeld in Sources */,
 				6F9DE7F51F97BD4200BCF910 /* MCMessage.swift in Sources */,
 				6FF06D641F942B2100A5D90F /* ConversationViewController.swift in Sources */,
 				6F7D273D1F7ED91A008E9843 /* UIColor+AppColors.swift in Sources */,
@@ -435,7 +467,7 @@
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mbabaev.TinkoffChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbabaev.TinkoffChatTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,7 +483,7 @@
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mbabaev.TinkoffChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbabaev.TinkoffChatTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -480,6 +512,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6FB16A43207FF420004C6066 /* TinkoffChat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6FB16A44207FF420004C6066 /* TinkoffChatModel.xcdatamodel */,
+			);
+			currentVersion = 6FB16A44207FF420004C6066 /* TinkoffChatModel.xcdatamodel */;
+			path = TinkoffChat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6F9A458B1F72C9D6006B6055 /* Project object */;
 }

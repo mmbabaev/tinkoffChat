@@ -371,9 +371,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Ydb-uI-uXp"/>
                                                         </constraints>
-                                                        <state key="normal" title="Operation"/>
+                                                        <state key="normal" title="CoreData"/>
                                                         <connections>
-                                                            <action selector="saveProfileOperation:" destination="Scw-vR-73X" eventType="touchUpInside" id="9hQ-36-KQW"/>
+                                                            <action selector="saveProfileCoreData:" destination="Scw-vR-73X" eventType="touchUpInside" id="ecu-4q-ncP"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -421,7 +421,7 @@
                         <viewLayoutGuide key="safeArea" id="ArZ-Kv-Sui"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="dsr-ZI-IUE">
-                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="q8h-xL-teh">
+                        <barButtonItem key="leftBarButtonItem" title="Закрыть" id="q8h-xL-teh">
                             <connections>
                                 <action selector="dismissClicked:" destination="Scw-vR-73X" id="59c-yI-VLM"/>
                             </connections>
@@ -432,16 +432,16 @@
                         <outlet property="aboutField" destination="v5c-Ru-Bpk" id="OCA-XL-Gbv"/>
                         <outlet property="activityIndicator" destination="bPR-nD-8lB" id="4LS-vq-3aG"/>
                         <outlet property="cameraButton" destination="2aK-Rk-Hgx" id="2iU-lw-GXQ"/>
+                        <outlet property="coreDataButton" destination="3Gf-U2-Ohd" id="wiQ-Mx-SvY"/>
                         <outlet property="gcdButton" destination="5f0-19-YR5" id="sOb-hH-BrH"/>
                         <outlet property="nameField" destination="5S2-jX-Fmi" id="lfb-HG-7Hz"/>
-                        <outlet property="operationButton" destination="3Gf-U2-Ohd" id="6bz-vq-G7R"/>
                         <outlet property="profileImageView" destination="deQ-9t-Wod" id="f5D-8b-UYf"/>
                         <outlet property="profileScrollView" destination="YVD-4n-zRQ" id="BQy-UB-qkH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eom-gH-OBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="-234"/>
+            <point key="canvasLocation" x="784.79999999999995" y="-234.23645320197045"/>
         </scene>
     </scenes>
     <resources>

@@ -17,7 +17,7 @@ class Conversation {
         }
     }
     
-    var user: User
+    var user: UserInfo
     
     var date: Date = Date()
     var hasUnreadMessages: Bool = false
@@ -26,6 +26,6 @@ class Conversation {
 
     
     init(userID: String, userName: String) {
-        self.user = User(id: userID, name: userName)
+        self.user = UserInfo(id: userID, name: userName)
     }
 }
